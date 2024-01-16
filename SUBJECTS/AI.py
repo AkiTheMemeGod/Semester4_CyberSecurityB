@@ -3,7 +3,7 @@ from dependencies import *
 
 def app():
 
-    center_title(60, "red", "21CSC206T<br>Artificial Intelligence")
+    center_title(60, "#0C2637", "21CSC206T<br>Artificial Intelligence")
     # st.title(":red[21CSC206T] - Artificial Intelligence")
     data = Database()
 

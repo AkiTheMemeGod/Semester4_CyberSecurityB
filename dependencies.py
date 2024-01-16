@@ -1,6 +1,7 @@
 import sqlite3 as sq
 import streamlit as st
 
+
 def center_title(size, color, title):
     st.markdown(f"""
                 <h1 style="font-family:monospace; color:{color}; font-size: {size}px;", align="center">{title}</h1>
@@ -26,3 +27,5 @@ class Database:
         raw_list = cursor.fetchall()
         doc_list = [item[0] for item in raw_list]
         return doc_list
+
+

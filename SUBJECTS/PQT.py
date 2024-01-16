@@ -2,7 +2,7 @@ from dependencies import *
 
 
 def app():
-    center_title(60, "red", "21MAB204T<br>Probability and Queueing Theory")
+    center_title(60, "#0C2637", "21MAB204T<br>Probability and Queueing Theory")
     # st.title(":red[21CSC205P] - Database Management Systems")
     data = Database()
 

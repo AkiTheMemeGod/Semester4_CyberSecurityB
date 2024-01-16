@@ -1,11 +1,14 @@
-from dependencies import center_title, st
+from dependencies import *
 from SUBJECTS import Home, AI, CNS, DAA, DBMS, PQT
 from streamlit_option_menu import option_menu
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="CSE-CS Notes", page_icon="📚")
 
 
 class Notes:
+
+    def __init__(self):
+        self.apps = []
 
     @staticmethod
     def run():
@@ -28,6 +31,7 @@ class Notes:
                 menu_title=None,
                 options=["Home", "AI", "CNS", "DAA", "DBMS", "PQT"],
                 orientation="vertical",
+                icons=["house-door", "robot", "key", "code-slash", "database", "percent"],
                 default_index=0,
             )
 
@@ -48,5 +52,4 @@ class Notes:
 
         if option == "PQT":
             PQT.app()
-        # st.session_state
     run()
