@@ -1,5 +1,6 @@
 import os
 import sqlite3 as sq
+import subprocess
 
 
 class Upload:
@@ -12,6 +13,7 @@ class Upload:
             byt = open(f"upload/{i}", "rb").read()
             data = (i, byt)
             cursor.execute(f"INSERT INTO {table} VALUES (?,?)", data)
+            os.remove(f"upload/{i}")
         self.connection.commit()
 
 
@@ -21,18 +23,14 @@ subject = subject.lower()
 try:
     u = Upload()
     u.upload_from_folder(subject)
-    import subprocess
 
+# checking
 
     def commit_and_push(commit_message, branch='master'):
         try:
-            # Stage all changes
-            subprocess.run(['git', 'add', '.'])
 
-            # Commit changes
+            subprocess.run(['git', 'add', 'sem4.db'])
             subprocess.run(['git', 'commit', '-m', commit_message])
-
-            # Push changes to the specified branch
             subprocess.run(['git', 'push', 'origin', branch])
 
             print("Changes committed and pushed successfully.")
@@ -41,7 +39,7 @@ try:
 
 
     # Example usage
-    commit_mesg = "Automated commit to upload files"
+    commit_mesg = "Updated database"
     commit_and_push(commit_mesg)
 
 except Exception as e:
