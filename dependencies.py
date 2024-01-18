@@ -29,3 +29,31 @@ class Database:
         return doc_list
 
 
+class Subject:
+
+    def __init__(self, title, sub):
+        self.title = title
+        self.sub = sub
+
+    def app(self):
+        center_title(60, "#0C2637", self.title)
+        data = Database()
+
+        st.markdown(
+            """<h1 style="font-family:monospace; color:black; font-size: 50px;", align="center">📚 Notes</h1>""",
+            unsafe_allow_html=True)
+        option = st.selectbox("Select the pdf you want to fetch : ",
+                              options=data.doc_list(self.sub), label_visibility="hidden",
+                              placeholder="Choose the document from here",
+                              index=0)
+
+        name, bin_data = data.get_data(self.sub, option)
+        st.markdown("###")
+        st.markdown("###")
+        st.markdown("###")
+
+        st.download_button(label="Download >    |" + f":red[{name}]" + "|     < document",
+                           data=bin_data,
+                           file_name=f"{name}",
+                           mime='application/octet-stream',
+                           use_container_width=True)
