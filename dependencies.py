@@ -1,6 +1,6 @@
 import sqlite3 as sq
 import streamlit as st
-
+import os
 
 def center_title(size, color, title):
     st.markdown(f"""
@@ -18,8 +18,10 @@ class Database:
         cursor = self.connection.cursor()
         cursor.execute(f"SELECT * FROM {subject} WHERE name=?", what)
         fetched_data = cursor.fetchone()
-
-        return fetched_data[0], fetched_data[1]
+        try:
+            return fetched_data[0], fetched_data[1]
+        except TypeError:
+            pass
 
     def doc_list(self, subject):
         cursor = self.connection.cursor()
@@ -45,14 +47,17 @@ class Subject(Database):
                               options=self.doc_list(self.sub), label_visibility="hidden",
                               placeholder="Choose the document from here",
                               index=0)
+        try:
+            name, bin_data = self.get_data(self.sub, option)
 
-        name, bin_data = self.get_data(self.sub, option)
-        st.markdown("###")
-        st.markdown("###")
-        st.markdown("###")
+            st.markdown("###")
+            st.markdown("###")
+            st.markdown("###")
 
-        st.download_button(label="Download >    |" + f":red[{name}]" + "|     < document",
-                           data=bin_data,
-                           file_name=f"{name}",
-                           mime='application/octet-stream',
-                           use_container_width=True)
+            st.download_button(label="Download >    |" + f":red[{name}]" + "|     < document",
+                               data=bin_data,
+                               file_name=f"{name}",
+                               mime='application/octet-stream',
+                               use_container_width=True)
+        except Exception:
+            pass
