@@ -21,6 +21,29 @@ subject = subject.lower()
 try:
     u = Upload()
     u.upload_from_folder(subject)
+    import subprocess
+
+
+    def commit_and_push(commit_message, branch='main'):
+        try:
+            # Stage all changes
+            subprocess.run(['git', 'add', '.'])
+
+            # Commit changes
+            subprocess.run(['git', 'commit', '-m', commit_message])
+
+            # Push changes to the specified branch
+            subprocess.run(['git', 'push', 'origin', branch])
+
+            print("Changes committed and pushed successfully.")
+        except Exception as e:
+            print(f"Error: {e}")
+
+
+    # Example usage
+    commit_mesg = "Automated commit to upload files"
+    branch_name = "main"
+    commit_and_push(commit_mesg, branch_name)
 
 except Exception as e:
     print("An error occurred in uploading files", e)

@@ -60,4 +60,4 @@ class Subject(Database):
                                mime='application/octet-stream',
                                use_container_width=True)
         except Exception:
-            pass
+            st.error("Notes are currently unavailable")
