@@ -29,23 +29,24 @@ class Database:
         return doc_list
 
 
-class Subject:
+class Subject(Database):
 
     def __init__(self, title, sub):
+        super().__init__()
         self.title = title
         self.sub = sub
 
     def app(self):
         center_title(60, "#0C2637", self.title)
-        data = Database()
+        # data = Database()
 
         center_title(50, "black", "<br>📚 Notes")
         option = st.selectbox("Select the pdf you want to fetch : ",
-                              options=data.doc_list(self.sub), label_visibility="hidden",
+                              options=self.doc_list(self.sub), label_visibility="hidden",
                               placeholder="Choose the document from here",
                               index=0)
 
-        name, bin_data = data.get_data(self.sub, option)
+        name, bin_data = self.get_data(self.sub, option)
         st.markdown("###")
         st.markdown("###")
         st.markdown("###")

@@ -26,7 +26,7 @@ class Notes:
             
                         """, unsafe_allow_html=True)
 
-            st.image("Srmseal.png")
+            st.image("Srmseal.png")  # Logo and the title "SRM notes"
 
         with st.sidebar:
             option = option_menu(
@@ -37,13 +37,33 @@ class Notes:
                 default_index=0,
             )
 
-        side_title = '<h1 style="font-family:monospace; color:#0C2637; font-size: 35px;" align="center">👨‍💻Made by : </h1><br>'
+        side_title = '<h1 style="font-family:monospace; color:#0C2637; font-size: 30px;" align="center">👨‍💻Made by : </h1><br>'
         st.sidebar.markdown(side_title, unsafe_allow_html=True)
 
         st.sidebar.link_button("Made by Akash", url="https://akashportfolio.streamlit.app/",
                                use_container_width=True)
         st.sidebar.link_button("Contact Me", url="https://akashportfolio.streamlit.app/Contact_Me",
-                               use_container_width=True)
+                               use_container_width=True)  # Made by section
+
+        with st.sidebar:  # Follow me on section
+            side_title = '<br><h1 style="font-family:monospace; color:#0C2637; font-size: 30px;" align="center">📲Follow me on : </h1><br>'
+            st.sidebar.markdown(side_title, unsafe_allow_html=True)
+            st.link_button("Linked-In",
+                           url="https://www.linkedin.com/in/akash-k-8b2132251/",
+                           use_container_width=True,
+                           type="secondary",
+                           help="Linked-In Profile")
+
+            st.link_button("Twitter",
+                           url="https://twitter.com/AkiTheMemeGod1",
+                           use_container_width=True,
+                           type="secondary",
+                           help="My Twitter")
+            st.link_button("GitHub",
+                           url="https://github.com/AkiTheMemeGod",
+                           use_container_width=True,
+                           type="secondary",
+                           help="My GitHub")
 
         if option == "Home":
             Home.app()
