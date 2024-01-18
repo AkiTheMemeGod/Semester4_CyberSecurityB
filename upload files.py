@@ -24,7 +24,7 @@ try:
     import subprocess
 
 
-    def commit_and_push(commit_message, branch='main'):
+    def commit_and_push(commit_message, branch='master'):
         try:
             # Stage all changes
             subprocess.run(['git', 'add', '.'])
@@ -42,8 +42,7 @@ try:
 
     # Example usage
     commit_mesg = "Automated commit to upload files"
-    branch_name = "main"
-    commit_and_push(commit_mesg, branch_name)
+    commit_and_push(commit_mesg)
 
 except Exception as e:
     print("An error occurred in uploading files", e)
