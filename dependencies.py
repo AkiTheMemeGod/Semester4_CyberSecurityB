@@ -39,9 +39,7 @@ class Subject:
         center_title(60, "#0C2637", self.title)
         data = Database()
 
-        st.markdown(
-            """<h1 style="font-family:monospace; color:black; font-size: 50px;", align="center">📚 Notes</h1>""",
-            unsafe_allow_html=True)
+        center_title(50, "black", "<br>📚 Notes")
         option = st.selectbox("Select the pdf you want to fetch : ",
                               options=data.doc_list(self.sub), label_visibility="hidden",
                               placeholder="Choose the document from here",

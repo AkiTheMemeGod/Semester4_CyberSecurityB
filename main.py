@@ -28,7 +28,6 @@ class Notes:
 
             st.image("Srmseal.png")
 
-
         with st.sidebar:
             option = option_menu(
                 menu_title=None,
