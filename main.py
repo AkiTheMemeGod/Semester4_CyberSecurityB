@@ -2,7 +2,7 @@ from dependencies import *
 import Home
 from streamlit_option_menu import option_menu
 
-st.set_page_config(layout="centered", page_title="CSE-CS Notes", page_icon="📚")
+st.set_page_config(layout="centered", page_title="Carry My Notes", page_icon="📚")
 
 
 class Notes:
@@ -12,9 +12,10 @@ class Notes:
 
     @staticmethod
     def run():
+
         c1, c2, c3 = st.sidebar.columns(3)
         with c1:
-            side_title = '<h3 style="font-family:monospace; color:black; font-size: 50px;" align="center">SRM Notes</h3>'
+            side_title = '<h3 style="font-family:monospace; color:black; font-size: 40px;" align="center">CarryMyNotes</h3><br>'
             st.sidebar.markdown(side_title, unsafe_allow_html=True)
         with c2:
             st.markdown("""
