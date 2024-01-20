@@ -28,14 +28,14 @@ class Notes:
 
             st.image("Srmseal.png")  # Logo and the title "SRM notes"
 
-        with st.sidebar:
-            option = option_menu(
-                menu_title=None,
-                options=["Home", "AI", "CNS", "DAA", "DBMS", "PQT"],
-                orientation="vertical",
-                icons=["house-door", "robot", "key", "code-slash", "database", "percent"],
-                default_index=0,
-            )
+        # with st.sidebar:
+        option = option_menu(
+            menu_title=None,
+            options=["Home", "AI", "CNS", "DAA", "DBMS", "PQT"],
+            orientation="horizontal",
+            icons=["house-door", "robot", "key", "code-slash", "database", "percent"],
+            default_index=0,
+        )
 
         side_title = '<h1 style="font-family:monospace; color:#0C2637; font-size: 30px;" align="center">👨‍💻Made by : </h1><br>'
         st.sidebar.markdown(side_title, unsafe_allow_html=True)

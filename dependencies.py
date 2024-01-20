@@ -2,6 +2,7 @@ import sqlite3 as sq
 import streamlit as st
 import os
 
+
 def center_title(size, color, title):
     st.markdown(f"""
                 <h1 style="font-family:monospace; color:{color}; font-size: {size}px;", align="center">{title}</h1>
@@ -39,6 +40,7 @@ class Subject(Database):
         self.sub = sub
 
     def app(self):
+
         center_title(60, "#0C2637", self.title)
         # data = Database()
 
@@ -61,3 +63,13 @@ class Subject(Database):
                                use_container_width=True)
         except Exception:
             st.error("Notes are currently unavailable")
+
+
+
+class Assignments:
+
+    def __init__(self):
+        pass
+
+    def app(self):
+        pass
