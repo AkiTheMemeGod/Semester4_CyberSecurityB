@@ -1,3 +1,4 @@
+import sqlite3
 import sqlite3 as sq
 import streamlit as st
 import os
@@ -39,18 +40,24 @@ class Database:
             pass
 
     def notes_list(self, subject):
-        cursor = self.connection.cursor()
-        cursor.execute(f"SELECT name FROM {subject}")
-        raw_list = cursor.fetchall()
-        doc_list = [item[0] for item in raw_list if item[0] is not None]
-        return doc_list
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(f"SELECT name FROM {subject}")
+            raw_list = cursor.fetchall()
+            doc_list = [item[0] for item in raw_list if item[0] is not None]
+            return doc_list
+        except Exception:
+            pass
 
     def ass_list(self, subject):
-        cursor = self.connection.cursor()
-        cursor.execute(f"SELECT name_a FROM {subject}")
-        raw_list = cursor.fetchall()
-        ass_list = [item[0] for item in raw_list if item[0] is not None]
-        return ass_list
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(f"SELECT name_a FROM {subject}")
+            raw_list = cursor.fetchall()
+            ass_list = [item[0] for item in raw_list if item[0] is not None]
+            return ass_list
+        except Exception:
+            pass
 
 
 class Subject(Database):
