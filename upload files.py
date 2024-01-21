@@ -44,7 +44,7 @@ try:
     def commit_and_push(commit_message, branch='master'):
         try:
 
-            subprocess.run(['git', 'add', 'sem4.db'])
+            subprocess.run(['git', 'add', 'sem4.db upload_log.txt'])
             subprocess.run(['git', 'commit', '-m', commit_message])
             subprocess.run(['git', 'push', 'origin', branch])
 

@@ -8,7 +8,7 @@ def center_title(size, color, title):
     st.markdown(f"""
                 <h1 style="font-family:monospace; color:{color}; font-size: {size}px;", align="center">{title}</h1>
                 <br>""",
-                unsafe_allow_html=True)
+                unsafe_allow_html=True)  # , help="Subject Code and Title" )
 
 
 def fetch_log(filepath="upload_log.txt"):

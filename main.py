@@ -3,6 +3,26 @@ import Home
 from streamlit_option_menu import option_menu
 
 st.set_page_config(layout="centered", page_title="Carry My Notes", page_icon="📚")
+pg_bg_img = f"""
+<style>
+[data-testid="stApp"] {{
+background-image: url("https://i.imgur.com/6NwtL8l.png");
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: local;
+background-position: top left;
+}}
+[data-testid="stHeader"]{{
+background-color: rgba(0,0,0,0);
+}}
+
+[data-testid="stSidebar"]{{
+background-color: rgba(255,255,243,0.50);
+}}
+</style>
+"""
+
+st.markdown(pg_bg_img, unsafe_allow_html=True)
 
 
 class Notes:
