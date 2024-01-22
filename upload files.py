@@ -53,7 +53,7 @@ try:
             print(f"Error: {e}")
 
     commit_mesg = f"Updated database for {subject}"
-    commit_and_push(commit_mesg)
+    # commit_and_push(commit_mesg)
 
 except Exception as e:
     print("An error occurred in uploading files", e)

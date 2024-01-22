@@ -52,9 +52,9 @@ class Notes:
         with st.sidebar:
             option = option_menu(
                 menu_title=None,
-                options=["Home", "AI", "CNS", "DAA", "DBMS", "PQT"],
+                options=["Home", "AI", "CNS", "DAA", "DBMS", "PQT", "CCTS"],
                 orientation="vertical",
-                icons=["house-door", "robot", "key", "code-slash", "database", "percent"],
+                icons=["house-door", "robot", "key", "code-slash", "database", "percent", "lightbulb"],
                 default_index=0,
             )
 
@@ -108,5 +108,9 @@ class Notes:
         if option == "PQT":
             pqt = Subject("21MAB204T<br>Probability and Queueing Theory", option)
             pqt.app()
+
+        if option == "CCTS":
+            ccts = Subject("21PDM202L<br>Critical and Creative Thinking Skills", option)
+            ccts.app()
 
     run()
