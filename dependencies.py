@@ -105,7 +105,7 @@ class Database:
         s.quit()
         return otp
 
-# checking GitHub
+# checking GitHubasda
 
 class Subject(Database):
 
