@@ -128,7 +128,7 @@ class Subject(Database):
         else:
             opts = self.ass_list(self.sub)
         center_title(50, "black", f"<br>📚 {r}")
-        option = st.selectbox("Select the pdf you want to fetch : ",
+        option = st.selectbox("Select the Document : ",
                               options=opts,
                               placeholder="Choose the document from here",
                               index=0)
