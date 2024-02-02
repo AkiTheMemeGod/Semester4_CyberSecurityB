@@ -2,7 +2,7 @@ from dependencies import *
 import Home
 from streamlit_option_menu import option_menu
 
-st.set_page_config(layout="centered", page_title="Carry My Notes", page_icon="📚")
+st.set_page_config(layout="centered", page_title="Carry My Notes", page_icon="📚", initial_sidebar_state="expanded")
 pg_bg_img = f"""
 <style>
 [data-testid="stApp"] {{
