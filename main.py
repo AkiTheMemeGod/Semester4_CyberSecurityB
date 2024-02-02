@@ -88,33 +88,34 @@ class Notes:
 
         if option == "Home":
             Home.app()
-
-        if option == "AI":
-            ai = Subject("21CSC206T<br>Artificial Intelligence", option)
-            ai.app()
-
-        if option == "CNS":
-            cns = Subject("21CSE281T<br>Cryptography and Network Security", option)
-            cns.app()
-
-        if option == "DAA":
-            daa = Subject("21CSC204J<br>Design and Analysis of Algorithms", option)
-            daa.app()
-
-        if option == "DBMS":
-            dbms = Subject("21CSC205P<br>Database Management Systems", option)
-            dbms.app()
-
-        if option == "PQT":
-            pqt = Subject("21MAB204T<br>Probability and Queueing Theory", option)
-            pqt.app()
-
-        if option == "CCTS":
-            ccts = Subject("21PDM202L<br>Critical and Creative Thinking Skills", option)
-            ccts.app()
-
-        if option == "UHV":
-            uhv = Subject("21LEM202T<br>Universal Human Values", option)
-            uhv.app()
-
+        try:
+            if option == "AI":
+                ai = Subject("21CSC206T<br>Artificial Intelligence", option)
+                ai.app()
+    
+            if option == "CNS":
+                cns = Subject("21CSE281T<br>Cryptography and Network Security", option)
+                cns.app()
+    
+            if option == "DAA":
+                daa = Subject("21CSC204J<br>Design and Analysis of Algorithms", option)
+                daa.app()
+    
+            if option == "DBMS":
+                dbms = Subject("21CSC205P<br>Database Management Systems", option)
+                dbms.app()
+    
+            if option == "PQT":
+                pqt = Subject("21MAB204T<br>Probability and Queueing Theory", option)
+                pqt.app()
+    
+            if option == "CCTS":
+                ccts = Subject("21PDM202L<br>Critical and Creative Thinking Skills", option)
+                ccts.app()
+    
+            if option == "UHV":
+                uhv = Subject("21LEM202T<br>Universal Human Values", option)
+                uhv.app()
+        except TypeError:
+            center_title(50, "red", "We are experiencing technical difficulties, should be back up again soon")
     run()
