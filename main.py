@@ -52,9 +52,9 @@ class Notes:
         with st.sidebar:
             option = option_menu(
                 menu_title=None,
-                options=["Home", "AI", "CNS", "DAA", "DBMS", "PQT", "CCTS"],
+                options=["Home", "AI", "CNS", "DAA", "DBMS", "PQT", "CCTS", "UHV"],
                 orientation="vertical",
-                icons=["house-door", "robot", "key", "code-slash", "database", "percent", "lightbulb"],
+                icons=["house-door", "robot", "key", "code-slash", "database", "percent", "lightbulb", "person-fill"],
                 default_index=0,
             )
 
@@ -112,5 +112,9 @@ class Notes:
         if option == "CCTS":
             ccts = Subject("21PDM202L<br>Critical and Creative Thinking Skills", option)
             ccts.app()
+
+        if option == "UHV":
+            uhv = Subject("21LEM202T<br>Universal Human Values", option)
+            uhv.app()
 
     run()
