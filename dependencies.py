@@ -2,13 +2,19 @@ import sqlite3
 import sqlite3 as sq
 import streamlit as st
 import os
+import random as rd
+import smtplib as sm
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+import time
 
 
 def center_title(size, color, title):
     st.markdown(f"""
                 <h1 style="font-family:monospace; color:{color}; font-size: {size}px;", align="center">{title}</h1>
                 <br>""",
-                unsafe_allow_html=True)  # , help="Subject Code and Title" )
+                unsafe_allow_html=True)  # , help="Subject Code and Title"
 
 
 def fetch_log(filepath="upload_log.txt"):
@@ -59,6 +65,46 @@ class Database:
         except Exception:
             pass
 
+    @staticmethod
+    def otp_gen():
+        otp = ""
+        for i in range(0, 6):
+            z = str(rd.randint(0, 9))
+            otp += z
+        return otp
+
+    def email(self, email, name):
+        cursor = self.connection.cursor()
+        cursor.execute(f"SELECT email FROM email_notification")
+        em_list = [item[0] for item in cursor.fetchall()]
+        if email not in em_list:
+            data = (email, name)
+            cursor.execute(f"INSERT INTO email_notification (email, name) VALUES (?,?)", data)
+            self.connection.commit()
+            return st.success("Now you will be notified for any new notes update")
+        else:
+            return st.error("Email Already Subscribed !")
+
+    def send_mail(self, To):
+
+        msg = MIMEMultipart()
+        msg['Subject'] = 'Carry My Notes'
+        msg['From'] = 'e@mail.cc'
+        msg['To'] = 'e@mail.cc'
+        otp = self.otp_gen()
+
+        text = MIMEText(f"Your one-time password for CarryMyNotes.streamlit.app is : *{otp}*")
+        msg.attach(text)
+
+        s = sm.SMTP('smtp.gmail.com', 587)
+        s.ehlo()
+        s.starttls()
+        s.ehlo()
+        s.login("akis.pwdchecker@gmail.com", password="tjjqhaifdobuluhg")
+        s.sendmail("akis.pwdchecker@gmail.com", To, msg.as_string())
+        s.quit()
+        return otp
+
 
 class Subject(Database):
 
@@ -83,7 +129,7 @@ class Subject(Database):
             opts = self.ass_list(self.sub)
         center_title(50, "black", f"<br>📚 {r}")
         option = st.selectbox("Select the pdf you want to fetch : ",
-                              options=opts, label_visibility="hidden",
+                              options=opts,
                               placeholder="Choose the document from here",
                               index=0)
         try:
